@@ -61,3 +61,14 @@ docker run --rm -v "$PWD":/r -w /r oven/bun:1.4.0-alpine sh -c \
 ## Observed bad output
 
 See `bundle-1.4.1-excerpt.js`. Full bundle available on request.
+
+## Status (2026-09-05)
+
+Confirmed by Bun maintainers as a duplicate of
+[oven-sh/bun#41351](https://github.com/oven-sh/bun/issues/41351) — scope: any non-minified
+`bun build` of an app using **elysia ≥ 1.4.28** on **Bun 1.4.1**. Fix in progress:
+[oven-sh/bun#41354](https://github.com/oven-sh/bun/pull/41354).
+
+**Maintainer-endorsed workaround until it ships:** build with `--minify-identifiers`
+(or `--minify`) — the identifier minifier uses a different renamer that does not have
+this bug. This repo stays up as a verification case for the fix.
